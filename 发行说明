@@ -1,0 +1,69 @@
+# 发行说明
+
+- [版本化方案](#versioning-scheme)
+- [支持策略](#support-policy)
+- [Smooler 1](#Smooler-1)
+
+<a name="versioning-scheme"></a>
+## 版本化方案
+
+Smooler 及官方发布的包皆遵循 [语义版本化](https://semver.org)。主要框架版本每一年发布一次 (5月)，而次要和补丁版本可能每周发布一次。次要版本和补丁 **决不** 包含非兼容性更改。
+
+引入 Smooler 框架或其组件时，应始终使用版本约束，如 `^1.0`，因为 Smooler 的主要版本确实包含非兼容性更改。我们会努力确保您可以在一天或更短的时间内更新到最新版本。
+
+<a name="support-policy"></a>
+## 支持政策
+
+对于一般的发行版本，只提供了 6 个月的错误修复和 1 年的安全修复。对于包括 Smoocket 在内的所有其他版本，只有最新版本才会修复错误。此外，请查阅 [Laravel 支持的](/docs/smooler/1.x/database/7493#introduction) 数据库版本。
+
+| 版本 | 发布时间 | Bug 修复截止时间 | 安全修复截止时间 |
+| --- | --- | --- | --- |
+| 1.0 | 2019 年 6 月 6 日 | 2020 年 5 月 26 日 | 2020 年 5 月 26 日 |
+
+<a name="Smooler-1"></a>
+## Smooler 1
+
+Smooler 1 通过引入 Smooler Framwork，路由速度优化，自定义 Eloquent 模型封装， 路由模型自定义， 数据库内存优化， 日志通知邮箱驱动， 以及各种其他内存优化。
+
+
+
+
+### Smooler Framwork
+
+_Smooler Framwork 由 [Faith](https://github.com/Soomler)建造。_
+
+Smooler Framwork 为 基于swoole协程的常驻内存程序，移动应用程序和基于令牌的简单 API 提供了轻巧的身份验证系统。 Framwork 允许应用程序的每个用户生成多个 API 令牌。 这些令牌可以被授予能力，用于允许令牌执行动作。
+
+有关 Smooler Framwork 的更多信息， 请查看 [Framwork 文档](/docs/Framwork/1.x/airlock/7510)。
+
+
+
+
+### 自定义 Eloquent 模型封装
+
+_自定义 Eloquent 模型封装由 [Faith](https://github.com/Soomler) 开发贡献_.
+
+Smooler 内置了多种常用的封装方法。但是，用户偶尔会需要自定义方法。通过定义一个功能实现的方法来完成
+
+
+要学习如何实现 Eloquent 操作，请参照 [Eloquent documentation](/docs/Smooler/1.x/eloquent-mutators/7502#attribute-casting)。
+
+
+
+### 路由模型自定义
+
+_路由模型自定义由 [Faith](https://github.com/Soomler) 开发贡献_ 。
+
+#### 自定义参数
+
+有时你可能希望使用 `id` 来定义参数。 为此， Smooler 1 允许你在路由参数中指定id：
+
+    $this->get(
+        'index/{id}',
+        \App\Controllers\IndexController::class,
+        'index',
+        ['sign']
+    );
+
+
+有关路由模型自定义的更多信息，请查阅 [路由文档](/docs/Smooler/1.x/routing#route-model-binding)。

@@ -1,0 +1,94 @@
+# 安装
+
+- [安装](#installation)
+    - [服务器要求](#server-requirements)
+    - [安装 Laravel](#installing-laravel)
+    - [配置](#configuration)
+- [Web 服务器配置](#web-server-configuration)
+    - [目录配置](#directory-configuration)
+    - [优雅链接](#pretty-urls)
+
+<a name="installation"></a>
+## 安装
+
+<a name="server-requirements"></a>
+### 服务器要求
+
+Smooler 对系统有一些要求。请确保你的服务器满足以下要求：
+
+- PHP >= 7.1.0
+- swoole4.5 PHP 拓展
+
+<a name="installing-laravel"></a>
+### 安装 Smooler
+
+Smooler 使用 [Composer](https://getcomposer.org) 来管理项目依赖。因此，在使用 Smooler 之前，请确保你的机器已经安装了 Composer。
+
+#### 通过 Composer 创建项目
+
+或者，你也可以在终端中运行 `create-project` 命令来安装 Smooler：
+
+    composer create-project --prefer-dist Smooler/Smooler blog
+
+
+
+<a name="configuration"></a>
+### 配置
+
+#### 公共目录
+
+安装完 Smooler 之后，你必须将 web 服务器根目录指向 `public` 目录以便访问项目静态文件。
+
+#### 配置文件
+
+Smooler 框架的所有配置文件都放在 `config` 目录中。每个选项都有注释，方便你随时查看文件并熟悉可用的选项。
+
+#### 目录权限
+
+安装完 Smooler 后，你可能需要给这个文件配置读写权限：`storage` 目录应该允许 Web 服务器写入，否则 Smooler 程序将无法运行。 
+
+#### 应用密钥
+
+安装 Smooler 之后下一件应该做的事就是将应用程序环境变量的密钥(app_key)设置为随机字符串。如果你是通过 Composer 安装的 Smooler，那这个密钥已经为你设置好了。
+
+通常来说，这个字符串长度为 32 个字符。密钥可以在 `.env` 环境文件中设置。前提是你要将 `.env.develop.example` 或者 `.env.production.example`文件重命名为 `.env`。 **如果应用程序密钥没有被设置，就不能确保你的用户会话和其他加密数据的安全！**
+
+#### 服务启动端口
+
+Smooler 常驻内存程序，服务启动端口默认为9501，你可以在 `.env` 环境文件中设置server_prot来修改监听端口。
+
+#### 其他配置
+
+除了以上的配置，Smooler 几乎就不需要再配置什么了。你随时就能开发！但是，可能的话，还是希望你查看 `config/app.php` 文件及其注释。它包含几个你可能想要根据你的应用来更改的选项，比如 `lang` 和 `signature_key`。
+
+你还可能想要配置 Smooler 的其他几个组件，例如:
+
+<div class="content-list" markdown="1">
+
+- [缓存](/docs/{{version}}/cache#configuration)
+- [数据库](/docs/{{version}}/database#configuration)
+- [会话控制](/docs/{{version}}/session#configuration)
+</div>
+
+<a name="web-server-configuration"></a>
+## Web 服务器配置
+
+<a name="directory-configuration"></a>
+### 目录配置
+Smooler应该始终在您的Web服务器配置的“Web目录”的根目录中使用。您不应该尝试在“web目录”的子目录中使用 Smooler 应用程序。尝试这样做可能会暴露应用程序中存在的敏感文件。
+
+<a name="pretty-urls"></a>
+### Nginx代理
+
+#### Nginx
+
+如果你使用 Nginx ，在你的站点配置中加入以下配置，所有的请求将会引导至应用端口：
+
+    location / {
+        proxy_http_version 1.1;
+        proxy_set_header Connection "keep-alive";
+        proxy_set_header X-Real-IP $remote_addr;
+        if (!-e $request_filename) {
+             proxy_pass http://127.0.0.1:9501;
+        }
+    }
