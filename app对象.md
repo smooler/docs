@@ -44,8 +44,67 @@ app对象是所有 Smooler 应用程序的引导中心。你的应用程序，�
 
 config只是定义了一个 `get` 方法，并且使用这个方法来获取相应的配置。
 
-<a name="constant-component"></a>
-### constant组件
+<a name="singleton-component"></a>
+### singleton组件
 
-用以管理Smooler所有常量的组件。您可以在根目录的`constant`目录中自定义常量。
-constant在Http 核心实例化的时候，会自动定义`constant`目录下所有文件的常量值。
+用以管理Smooler单例的组件。
+
+
+<a name="context-component"></a>
+### context组件
+
+用以管理Smooler上下文内容的组件。
+在http服务中，context包含了客户端请求的request类和response类。
+
+
+<a name="environment-component"></a>
+### environment组件
+
+用以管理Smooler所有环境变量的组件。
+环境变量在`env.php`中设置。
+
+
+<a name="lang-component"></a>
+### lang组件
+
+用以管理Smooler本地化多语言的组件。
+
+<a name="log-component"></a>
+### log组件
+
+用以管理Smooler日志的组件。
+
+<a name="exception-component"></a>
+### exception组件
+
+用以管理Smooler异常的组件。
+
+<a name="middleware-component"></a>
+### middleware组件
+
+用以管理Smooler中间件的组件。
+
+<a name="route-component"></a>
+### route组件
+
+用以管理Smooler路由的组件。
+
+<a name="controller-component"></a>
+### controller组件
+
+用以管理Smooler控制器的组件。
+
+<a name="validation-component"></a>
+### validation组件
+
+用以管理Smooler表单验证的组件。
+
+<a name="mysql-component"></a>
+### mysql组件
+
+用以管理Smooler数据库mysql的组件。
+
+<a name="redis-component"></a>
+### redis组件
+
+用以管理Smooler缓存redis的组件。
