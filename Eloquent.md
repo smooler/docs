@@ -26,7 +26,7 @@
 <a name="introduction"></a>
 ## 简介
 
-Laravel 的 Eloquent ORM 提供了漂亮、简洁的 ActiveRecord 实现来和数据库交互。每个数据库表都有一个对应的「模型」用来与该表交互。你可以通过模型查询数据表中的数据，并将新记录添加到数据表中。
+Smooler 的 Eloquent ORM 提供了漂亮、简洁的 ActiveRecord 实现来和数据库交互。每个数据库表都有一个对应的「模型」用来与该表交互。你可以通过模型查询数据表中的数据，并将新记录添加到数据表中。
 
 在开始之前，请确保在 `config/database.php` 中配置数据库连接。更多关于数据库的配置信息，请查看 [文档](/docs/{{version}}/database#configuration)。
 

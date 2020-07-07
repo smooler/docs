@@ -16,7 +16,7 @@ Smooler 内部调用swoole官方协程redis，实现web的高并发。
 <a name="configuration"></a>
 ### 配置
 
-Laravel 应用的 Redis 配置都在配置文件 `config/database.php` 中。在这个文件里，你可以看到  `redis` 数组里面包含了应用程序使用的 Redis 服务器：
+Smooler 应用的 Redis 配置都在配置文件 `config/database.php` 中。在这个文件里，你可以看到  `redis` 数组里面包含了应用程序使用的 Redis 服务器：
 
     'redis' => [
 
